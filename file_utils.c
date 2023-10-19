@@ -3,6 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * open_file - open a file with error checking
+ * @filename: full path to file
+ *
+ * Return: file pointer
+ */
+
 FILE *open_file(char *filename)
 {
 	FILE *file_pointer;
