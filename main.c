@@ -6,8 +6,8 @@
 /**
  * main - Entry point
  *
- * @argc - argument constant
- * @argv - argument vector
+ * @argc: argument constant
+ * @argv: argument vector
  *
  * Return: EXIT_SUCCESS
  */

@@ -1,13 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-
 #define _GNU_SOURCE
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
+#define DELIMS "\n\t\a\b "
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -23,7 +25,7 @@ typedef struct stack_s
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
-} stak_t;
+} stack_type;
 
 /**
  * struct instruction_s - opcode and its function
@@ -36,11 +38,11 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stak_t **stack, unsigned int line_number);
+	void (*f)(stack_type **stack, unsigned int line_number);
 } instruction_t;
 
 void read_instructions(char *filename);
-char **instruction_parser(char *instruction_line, char *delim);
+char **instruction_parser(char *line);
 
 /** ## error printers ## */
 int usage_error(int flag);
