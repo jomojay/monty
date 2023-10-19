@@ -15,6 +15,7 @@ opcode_func get_opcode(char *op_string)
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int i = 0;
