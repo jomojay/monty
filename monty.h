@@ -5,6 +5,10 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -20,6 +24,10 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
+
+/* stack utility functions */
+stack_t *add_node_end(stack_t **head, const int n);
+void free_stack(stack_t *head);
 
 /**
  * struct instruction_s - opcode and its function
