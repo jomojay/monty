@@ -30,7 +30,7 @@ typedef struct stack_s
 extern stack_type *global_stack;
 
 /* stack utility functions */
-stack_type *add_node_end(stack_type **head, const int n);
+stack_type *add_node(stack_type **head, const int n);
 void free_stack(stack_type *head);
 
 typedef int (*opcode_func)(stack_type **stack, unsigned int line_number, char *arg);
@@ -58,6 +58,8 @@ char **instruction_parser(char *line);
 int push(stack_type **stack, unsigned int line_number, char *arg);
 int pall(stack_type **stack, unsigned int line_number, char *arg);
 opcode_func get_opcode(char *op_string);
+
+int is_number(char *str);
 
 /** ## error printers ## */
 int usage_error(int flag);

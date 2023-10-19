@@ -31,7 +31,6 @@ void read_instructions(char *filename)
 {
 	unsigned int line_number = 1;
 	FILE *file_pointer;
-	int status;
 	char *line = NULL, **args = NULL;
 	size_t line_buffer = 0;
 	opcode_func op_func;
