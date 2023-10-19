@@ -25,6 +25,8 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+extern stack_t *global_stack;
+
 /* stack utility functions */
 stack_t *add_node_end(stack_t **head, const int n);
 void free_stack(stack_t *head);
