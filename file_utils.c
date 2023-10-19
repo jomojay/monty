@@ -13,10 +13,9 @@
 
 void read_instructions(char *filename)
 {
-	int cursor = 0;
+	unsigned int cursor = 0, line_number = 0;
 	FILE *file_pointer;
-	int line_number = 1;
-	char *line = NULL;
+	char *line = NULL, delim[] = " \n\t\a\b", **args = NULL;
 	size_t line_buffer = 0;
 
 	while (*(filename + cursor))
@@ -29,8 +28,9 @@ void read_instructions(char *filename)
 
 		while (getline(&line, &line_buffer, file_pointer) != -1)
 		{
-			printf("line %d: %s", line_number, line);
 			line_number++;
+			args = instruction_parser(line, delim);
+			printf("line <%d>; %s %s\n", line_number, args[0], args[1]);
 		}
 	}
 	else
