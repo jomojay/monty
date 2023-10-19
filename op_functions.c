@@ -108,3 +108,21 @@ int pint(stack_type **stack, unsigned int line_number, char *arg)
 
 	return (0);
 }
+
+/**
+ * nop - The opcode nop doesn’t do anything.
+ *
+ * @stack: pointer to head of stack
+ * @line_number: line number for current instruction
+ * @arg: argument, if any
+ *
+ * Return: 0 if successful, -1 on failure
+ */
+
+int nop(stack_type **stack, unsigned int line_number, char *arg)
+{
+	(void)stack;
+	(void)line_number;
+	(void)arg;
+	return (0);
+}

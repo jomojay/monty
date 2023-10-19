@@ -16,6 +16,7 @@ opcode_func get_opcode(char *op_string)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	int i = 0;
