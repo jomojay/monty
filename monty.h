@@ -33,6 +33,8 @@ extern stack_type *global_stack;
 stack_type *add_node_end(stack_type **head, const int n);
 void free_stack(stack_type *head);
 
+typedef void (*opcode_func)(stack_type **stack, unsigned int line_number, char *arg);
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -44,11 +46,15 @@ void free_stack(stack_type *head);
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_type **stack, unsigned int line_number);
+	opcode_func f;
 } instruction_t;
 
 void read_instructions(char *filename);
 char **instruction_parser(char *line);
+
+void push(stack_type **stack, unsigned int line_number, char *arg);
+void pall(stack_type **stack, unsigned int line_number, char *arg);
+opcode_func get_opcode(char *op_string);
 
 /** ## error printers ## */
 int usage_error(int flag);

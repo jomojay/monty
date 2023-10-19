@@ -14,28 +14,38 @@
 
 void read_instructions(char *filename)
 {
-	unsigned int cursor = 0, line_number = 0;
+	unsigned int line_number = 1;
 	FILE *file_pointer;
 	char *line = NULL, **args = NULL;
 	size_t line_buffer = 0;
+	opcode_func op_func;
 
-	while (*(filename + cursor))
-		cursor++;
+	file_pointer = fopen(filename, "r");
 
-	if ((filename[cursor - 2] == '.')
-			&& (filename[cursor - 1] == 'm'))
+	if (file_pointer)
 	{
-		file_pointer = fopen(filename, "r");
-
 		while (getline(&line, &line_buffer, file_pointer) != -1)
 		{
-			printf("line %d: ", line_number);
 			args = instruction_parser(line);
 			if (args)
-				printf("[%s, %s]", args[0], args[1]);
-			putchar('\n');
+			{
+				printf("line %d: %s\n", line_number, args[0]);
+				op_func = get_opcode(args[0]);
+				if (op_func != NULL)
+				{
+					op_func(&global_stack, line_number, args[1]);
+				}
+				else
+				{
+					fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args[0]);
+					exit(EXIT_FAILURE);
+				}
+				free(args);
+			}
 			line_number++;
 		}
+
+		fclose(file_pointer);
 	}
 	else
 	{
@@ -59,7 +69,6 @@ char **instruction_parser(char *line)
 	token = strtok(line_copy, DELIMS);
 	if (!token)
 	{
-		printf("Blank line");
 		return (NULL);
 	}
 	else
