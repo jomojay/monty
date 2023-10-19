@@ -14,13 +14,11 @@
 
 void read_instructions(char *filename)
 {
-	unsigned int cursor = 0, line_number = 1;
+	unsigned int line_number = 1;
 	FILE *file_pointer;
 	char *line = NULL, **args = NULL;
 	size_t line_buffer = 0;
-
-	while (*(filename + cursor))
-		cursor++;
+	opcode_func op_func;
 
 	file_pointer = fopen(filename, "r");
 
@@ -31,9 +29,10 @@ void read_instructions(char *filename)
 			args = instruction_parser(line);
 			if (args)
 			{
-				if (get_opcode(args[0]))
+				op_func = get_opcode(args[0]);
+				if (op_func)
 				{
-					get_opcode(args[0])(&global_stack, line_number, args[1]);
+					op_func(&global_stack, line_number, args[1]);
 				}
 				else
 				{

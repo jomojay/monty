@@ -20,7 +20,7 @@ void push(stack_type **stack, unsigned int line_number, char *arg)
 
 	if (arg == NULL)
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -38,7 +38,7 @@ void push(stack_type **stack, unsigned int line_number, char *arg)
 		}
 		else
 		{
-			fprintf(stderr, "L%d: usage: push integer", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -76,3 +76,4 @@ void pall(stack_type **stack, unsigned int line_number, char *arg)
 		}
 	}
 }
+
