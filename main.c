@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
 	char *filename;
-	stack_t *global_stack = NULL;
+	stack_type *global_stack = NULL;
 
 	if (argc != 2)
 	{
