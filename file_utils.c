@@ -29,8 +29,9 @@ void read_instructions(char *filename)
 			args = instruction_parser(line);
 			if (args)
 			{
+				printf("line %d: %s\n", line_number, args[0]);
 				op_func = get_opcode(args[0]);
-				if (op_func)
+				if (op_func != NULL)
 				{
 					op_func(&global_stack, line_number, args[1]);
 				}
@@ -39,9 +40,12 @@ void read_instructions(char *filename)
 					fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args[0]);
 					exit(EXIT_FAILURE);
 				}
+				free(args);
 			}
 			line_number++;
 		}
+
+		fclose(file_pointer);
 	}
 	else
 	{
