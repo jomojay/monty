@@ -3,6 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+FILE *open_file(char *filename)
+{
+	FILE *file_pointer;
+
+	file_pointer = fopen(filename, "r");
+
+	if (file_pointer == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
+
+	return (file_pointer);
+}
+
 /**
  * read_instructions - read the instructions
  * line by line
@@ -16,42 +31,44 @@ void read_instructions(char *filename)
 {
 	unsigned int line_number = 1;
 	FILE *file_pointer;
+	int status;
 	char *line = NULL, **args = NULL;
 	size_t line_buffer = 0;
 	opcode_func op_func;
 
-	file_pointer = fopen(filename, "r");
+	file_pointer = open_file(filename);
 
-	if (file_pointer)
+	while (getline(&line, &line_buffer, file_pointer) != -1)
 	{
-		while (getline(&line, &line_buffer, file_pointer) != -1)
+		args = instruction_parser(line);
+		if (args)
 		{
-			args = instruction_parser(line);
-			if (args)
+			op_func = get_opcode(args[0]);
+			if (op_func != NULL)
 			{
-				printf("line %d: %s\n", line_number, args[0]);
-				op_func = get_opcode(args[0]);
-				if (op_func != NULL)
+				if (op_func(&global_stack, line_number, args[1]) == -1)
 				{
-					op_func(&global_stack, line_number, args[1]);
-				}
-				else
-				{
-					fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args[0]);
+					free(args);
+					free(line);
+					fclose(file_pointer);
 					exit(EXIT_FAILURE);
 				}
-				free(args);
 			}
-			line_number++;
+			else
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args[0]);
+				free(args);
+				if (global_stack)
+					free_stack(global_stack);
+				exit(EXIT_FAILURE);
+			}
+			free(args);
 		}
+		line_number++;
+	}
 
-		fclose(file_pointer);
-	}
-	else
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
+	free(line);
+	fclose(file_pointer);
 }
 
 /**
@@ -64,11 +81,16 @@ char **instruction_parser(char *line)
 {
 	char **tokens = malloc(sizeof(char *) * 3);
 	char *token;
-	char *line_copy = strdup(line);
 
-	token = strtok(line_copy, DELIMS);
+	if (!tokens)
+	{
+		return (NULL);
+	}
+
+	token = strtok(line, DELIMS);
 	if (!token)
 	{
+		free(tokens);
 		return (NULL);
 	}
 	else
@@ -78,6 +100,5 @@ char **instruction_parser(char *line)
 		if (tokens[1])
 			tokens[2] = NULL;
 	}
-
 	return (tokens);
 }

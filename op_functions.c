@@ -14,14 +14,16 @@
  * Return: nothing
  */
 
-void push(stack_type **stack, unsigned int line_number, char *arg)
+int push(stack_type **stack, unsigned int line_number, char *arg)
 {
 	int element;
 
 	if (arg == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
 	}
 
 	if (strcmp(arg, "0") == 0)
@@ -39,9 +41,13 @@ void push(stack_type **stack, unsigned int line_number, char *arg)
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
+			if (global_stack)
+				free_stack(global_stack);
+			return (-1);
 		}
 	}
+
+	return (0);
 }
 
 /**
@@ -56,7 +62,7 @@ void push(stack_type **stack, unsigned int line_number, char *arg)
  * Return: nothing
  */
 
-void pall(stack_type **stack, unsigned int line_number, char *arg)
+int pall(stack_type **stack, unsigned int line_number, char *arg)
 {
 	stack_type *cursor;
 	(void)arg;
@@ -71,9 +77,12 @@ void pall(stack_type **stack, unsigned int line_number, char *arg)
 
 		while (cursor != NULL)
 		{
-			printf("%d\n", cursor->n);
+			fprintf(stdout, "%d\n", cursor->n);
 			cursor = cursor->prev;
 		}
 	}
+
+	return (0);
 }
+
 
