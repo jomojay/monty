@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+stack_type *global_stack = NULL;
 /**
  * main - Entry point
  *
@@ -15,7 +16,6 @@
 int main(int argc, char *argv[])
 {
 	char *filename;
-	stack_type *global_stack = NULL;
 
 	if (argc != 2)
 	{
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 	filename = argv[1];
 
 	read_instructions(filename);
+	free_stack(global_stack);
 
 	return (EXIT_SUCCESS);
 }
