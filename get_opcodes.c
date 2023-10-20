@@ -20,6 +20,7 @@ opcode_func get_opcode(char *op_string)
 		{"pop", pop},
 		{"pint", pint},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 	int i = 0;
