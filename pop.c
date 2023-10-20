@@ -5,7 +5,10 @@
  * @stack: The pointer to the stack_t list.
  * @line_number: The line number of a Monty bytecodes file.
  * @arg: argument to work with if necessary
+ *
+ * Return: 0 if successful, -1 on failure
  */
+
 int pop(stack_type **stack, unsigned int line_number, char *arg)
 {
 	stack_type *tmp = NULL;

@@ -10,7 +10,7 @@
  * @line_number: line number for current instruction
  * @arg: argument, if any
  *
- * Return: nothing
+ * Return: 0 if successful, -1 on failure
  */
 
 int swap(stack_type **stack, unsigned int line_number, char *arg)
