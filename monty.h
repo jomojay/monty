@@ -62,6 +62,7 @@ int push(stack_type **stack, unsigned int line_number, char *arg);
 int pall(stack_type **stack, unsigned int line_number, char *arg);
 int pint(stack_type **stack, unsigned int line_number, char *arg);
 int nop(stack_type **stack, unsigned int line_number, char *arg);
+int sub(stack_type **stack, unsigned int line_number, char *arg);
 opcode_func get_opcode(char *op_string);
 
 int is_number(char *str);
