@@ -34,7 +34,7 @@ int div_monty(stack_type **stack, unsigned int line_number, char *arg)
 	}
 	else
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		if (global_stack)
 			free_stack(global_stack);
 		return (-1);
