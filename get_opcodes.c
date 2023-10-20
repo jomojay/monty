@@ -21,6 +21,7 @@ opcode_func get_opcode(char *op_string)
 		{"pint", pint},
 		{"nop", nop},
 		{"sub", sub},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 	int i = 0;
