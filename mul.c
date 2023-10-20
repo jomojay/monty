@@ -29,7 +29,7 @@ int mul(stack_type **stack, unsigned int line_number, char *arg)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		if (global_stack)
 			free_stack(global_stack);
-		return (-1);
+		exit(EXIT_FAILURE);
 	}
 
 	return (0);
