@@ -89,23 +89,16 @@ int pall(stack_type **stack, unsigned int line_number, char *arg)
 
 int pint(stack_type **stack, unsigned int line_number, char *arg)
 {
-	stack_type *top_node;
+	stack_type *tmp = *stack;
 	(void)arg;
 
-	if (stack && *stack)
-	{
-		top_node = *stack;
-		fprintf(stdout, "%d\n", top_node->n);
-		fflush(stdout);
-	}
-	else
+	if (!tmp)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
-		if (global_stack)
-			free_stack(global_stack);
-		return (-1);
+		exit(EXIT_FAILURE);
 	}
 
+	printf("%d\n", tmp->n);
 	return (0);
 }
 
