@@ -65,7 +65,7 @@ int nop(stack_type **stack, unsigned int line_number, char *arg);
 int sub(stack_type **stack, unsigned int line_number, char *arg);
 opcode_func get_opcode(char *op_string);
 int mul(stack_type **stack, unsigned int line_number, char *arg);
-
+int div_monty(stack_type **stack, unsigned int line_number, char *arg);
 int is_number(char *str);
 
 /** ## error printers ## */
