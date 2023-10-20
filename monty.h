@@ -54,6 +54,9 @@ char **instruction_parser(char *line);
 
 void push(stack_type **stack, unsigned int line_number, char *arg);
 void pall(stack_type **stack, unsigned int line_number, char *arg);
+void swap(stack_type **stack, unsigned int line_number, char *arg);
+void pop(stack_type **stack, unsigned int line_number, char *arg);
+void add(stack_type **stack, unsigned int line_number, char *arg);
 opcode_func get_opcode(char *op_string);
 
 /** ## error printers ## */

@@ -13,7 +13,6 @@
 stack_type *add_node_end(stack_type **head, const int n)
 {
 	stack_type *new_node;
-	stack_type *cursor;
 
 	if (head)
 	{
@@ -27,11 +26,11 @@ stack_type *add_node_end(stack_type **head, const int n)
 
 		if (*head)
 		{
-			cursor = *head;
-			while (cursor->next)
-				cursor = cursor->next;
-			cursor->next = new_node;
-			new_node->prev = cursor;
+			new_node->prev = NULL;
+			new_node->next = *head;
+			(*head)->prev = new_node;
+			*head = new_node;
+
 		}
 		else
 		{

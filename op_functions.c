@@ -66,13 +66,10 @@ void pall(stack_type **stack, unsigned int line_number, char *arg)
 	{
 		cursor = *stack;
 
-		while (cursor->next != NULL)
-			cursor = cursor->next;
-
 		while (cursor != NULL)
 		{
 			printf("%d\n", cursor->n);
-			cursor = cursor->prev;
+			cursor = cursor->next;
 		}
 	}
 }
