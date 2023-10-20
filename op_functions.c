@@ -94,7 +94,7 @@ int pint(stack_type **stack, unsigned int line_number, char *arg)
 
 	if (!tmp)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		if (global_stack)
 			free_stack(global_stack);
 		return (-1);
