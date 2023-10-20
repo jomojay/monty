@@ -23,6 +23,7 @@ opcode_func get_opcode(char *op_string)
 		{"sub", sub},
 		{"mul", mul},
 		{"div", div_monty},
+		{"mod", mod_monty},
 		{NULL, NULL}
 	};
 	int i = 0;
