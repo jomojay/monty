@@ -10,39 +10,27 @@
  * Return: pointer to the new node
  */
 
-stack_type *add_node_end(stack_type **head, const int n)
+stack_type *add_node(stack_type **head, const int n)
 {
-	stack_type *new_node;
-
 	if (head)
 	{
-		new_node = (stack_type *)malloc(sizeof(stack_type));
+		stack_type *new_node = (stack_type *)malloc(sizeof(stack_type));
 
 		if (!new_node)
 			return (NULL);
 
 		new_node->n = n;
-		new_node->next = NULL;
+		new_node->next = *head;
+		new_node->prev = NULL;
 
 		if (*head)
-		{
-			new_node->prev = NULL;
-			new_node->next = *head;
 			(*head)->prev = new_node;
-			*head = new_node;
-
-		}
-		else
-		{
-			new_node->prev = NULL;
-			*head = new_node;
-		}
+		*head = new_node;
 
 		return (new_node);
 	}
 	else
 		return (NULL);
-
 }
 
 /**

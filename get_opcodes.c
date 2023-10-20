@@ -18,6 +18,8 @@ opcode_func get_opcode(char *op_string)
 		{"swap", swap},
 		{"add", add},
 		{"pop", pop},
+		{"pint", pint},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	int i = 0;

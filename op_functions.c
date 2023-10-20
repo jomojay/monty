@@ -11,37 +11,35 @@
  * @line_number: line number for current instruction
  * @arg: argument, if any
  *
- * Return: nothing
+ * Return: 0 if successful, -1 on failure
  */
 
-void push(stack_type **stack, unsigned int line_number, char *arg)
+int push(stack_type **stack, unsigned int line_number, char *arg)
 {
 	int element;
 
 	if (arg == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
 	}
 
-	if (strcmp(arg, "0") == 0)
+	if (is_number(arg))
 	{
-		element = 0;
-		add_node_end(stack, element);
+		element = atoi(arg);
+		add_node(stack, element);
 	}
 	else
 	{
-		element = atoi(arg);
-		if (element != 0)
-		{
-			add_node_end(stack, element);
-		}
-		else
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
 	}
+
+	return (0);
 }
 
 /**
@@ -53,10 +51,10 @@ void push(stack_type **stack, unsigned int line_number, char *arg)
  * @line_number: line number for current instruction
  * @arg: argument, if any
  *
- * Return: nothing
+ * Return: 0 if successful, -1 on failure
  */
 
-void pall(stack_type **stack, unsigned int line_number, char *arg)
+int pall(stack_type **stack, unsigned int line_number, char *arg)
 {
 	stack_type *cursor;
 	(void)arg;
@@ -68,9 +66,63 @@ void pall(stack_type **stack, unsigned int line_number, char *arg)
 
 		while (cursor != NULL)
 		{
-			printf("%d\n", cursor->n);
+			fprintf(stdout, "%d\n", cursor->n);
+			fflush(stdout);
 			cursor = cursor->next;
 		}
 	}
+
+	return (0);
 }
 
+/**
+ * pint - The opcode pint prints
+ * the value at the top of the stack,
+ * followed by a new line
+ *
+ * @stack: pointer to head of stack
+ * @line_number: line number for current instruction
+ * @arg: argument, if any
+ *
+ * Return: 0 if successful, -1 on failure
+ */
+
+int pint(stack_type **stack, unsigned int line_number, char *arg)
+{
+	stack_type *top_node;
+	(void)arg;
+
+	if (stack && *stack)
+	{
+		top_node = *stack;
+		fprintf(stdout, "%d\n", top_node->n);
+		fflush(stdout);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
+	}
+
+	return (0);
+}
+
+/**
+ * nop - The opcode nop doesn’t do anything.
+ *
+ * @stack: pointer to head of stack
+ * @line_number: line number for current instruction
+ * @arg: argument, if any
+ *
+ * Return: 0 if successful, -1 on failure
+ */
+
+int nop(stack_type **stack, unsigned int line_number, char *arg)
+{
+	(void)stack;
+	(void)line_number;
+	(void)arg;
+	return (0);
+}
