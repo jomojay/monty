@@ -28,6 +28,9 @@ opcode_func get_opcode(char *op_string)
 	};
 	int i = 0;
 
+	if (op_string[0] == '#')
+		return (instructions[6].f);
+
 	while (instructions[i].opcode != NULL)
 	{
 		if (strcmp(op_string, instructions[i].opcode) == 0)
