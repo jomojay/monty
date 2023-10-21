@@ -25,6 +25,7 @@ opcode_func get_opcode(char *op_string)
 		{"div", div_monty},
 		{"mod", mod_monty},
 		{"pchar", pchar},
+		{"pstr", pstr},
 		{NULL, NULL}
 	};
 	int i = 0;
