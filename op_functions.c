@@ -130,7 +130,10 @@ int pchar(stack_type **stack, unsigned int line_number, char *arg)
 	}
 
 	if (tmp->n < 0 || tmp->n > 127)
-		printf("%c\n", tmp->n);
+	{
+		putchar(tmp->n);
+		putchar(10);
+	}
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
