@@ -51,7 +51,7 @@ int rotr(stack_type **stack, unsigned int line_number, char *arg)
 	(void)line_number;
 	(void)arg;
 
-	if (stack && *stack)
+	if (*stack && (*stack)->next)
 	{
 		tail = *stack;
 
