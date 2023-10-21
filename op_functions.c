@@ -60,7 +60,6 @@ int pstr(stack_type **stack, unsigned int line_number, char *arg)
 
 		while (cursor != NULL)
 		{
-			fprintf(stdout, "%d\n", cursor->n);
 			if (cursor->n != 0 && (cursor->n >= 0 && cursor->n <= 127))
 				putchar(cursor->n);
 			else
