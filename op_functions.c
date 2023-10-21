@@ -105,6 +105,44 @@ int pint(stack_type **stack, unsigned int line_number, char *arg)
 }
 
 /**
+ * pchar - The opcode pint prints
+ * the char at the top of the stack,
+ * followed by a new line
+ *
+ * @stack: pointer to head of stack
+ * @line_number: line number for current instruction
+ * @arg: argument, if any
+ *
+ * Return: 0 if successful, -1 on failure
+ */
+
+int pchar(stack_type **stack, unsigned int line_number, char *arg)
+{
+	stack_type *tmp = *stack;
+	(void)arg;
+
+	if (!tmp)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
+	}
+
+	if (tmp->n < 0 || tmp->n > 127)
+		printf("%c\n", tmp->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		if (global_stack)
+			free_stack(global_stack);
+		return (-1);
+	}
+	return (0);
+
+}
+
+/**
  * nop - The opcode nop doesn’t do anything.
  *
  * @stack: pointer to head of stack
