@@ -129,7 +129,7 @@ int pchar(stack_type **stack, unsigned int line_number, char *arg)
 		return (-1);
 	}
 
-	if (tmp->n < 0 || tmp->n > 127)
+	if (tmp->n >= 0 || tmp->n <= 127)
 	{
 		putchar(tmp->n);
 		putchar(10);
