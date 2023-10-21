@@ -21,7 +21,7 @@ int rotl(stack_type **stack, unsigned int line_number, char *arg)
 	{
 		temp = *stack;
 
-		while (*stack)
+		while (*stack && (*stack)->next)
 		{
 			swap(&global_stack, 0, NULL);
 			*stack = (*stack)->next;
