@@ -14,6 +14,8 @@
 int rotl(stack_type **stack, unsigned int line_number, char *arg)
 {
 	stack_type *temp;
+	(void)line_number;
+	(void)arg;
 
 	if (stack && *stack)
 	{
