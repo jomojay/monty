@@ -20,7 +20,7 @@ opcode_func get_opcode(char *op_string)
 		{"mul", mul}, {"div", div_monty},
 		{"mod", mod_monty}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl},
-		{NULL, NULL}
+		{"rotr", rotr}, {NULL, NULL}
 	};
 	int i = 0;
 

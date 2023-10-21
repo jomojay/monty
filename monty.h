@@ -57,6 +57,7 @@ char **instruction_parser(char *line);
 
 int swap(stack_type **stack, unsigned int line_number, char *arg);
 int rotl(stack_type **stack, unsigned int line_number, char *arg);
+int rotr(stack_type **stack, unsigned int line_number, char *arg);
 int pop(stack_type **stack, unsigned int line_number, char *arg);
 int add(stack_type **stack, unsigned int line_number, char *arg);
 int push(stack_type **stack, unsigned int line_number, char *arg);
