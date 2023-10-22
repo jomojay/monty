@@ -53,7 +53,7 @@ doesn’t do anything.
 
 Usage: nop
 
-### #
+### `#`
 When the first non-space character of a line is #, treat this line as a comment (don’t do anything).
 
 
