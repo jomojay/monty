@@ -4,7 +4,7 @@
 #include <string.h>
 
 /**
- * mod - computes the remainder of  the division of
+ * mod_monty - computes the remainder of  the division of
  * the second top element of the stack
  * by the top element of the stack
  * @stack: pointer to head of stack

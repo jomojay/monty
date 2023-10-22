@@ -4,7 +4,7 @@
 #include <string.h>
 
 /**
- * div - divides the second top element of the stack
+ * div_monty - divides the second top element of the stack
  * by the top element of the stack
  * from the second top element of the stack.
  * @stack: pointer to head of stack
