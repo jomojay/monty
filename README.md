@@ -16,3 +16,30 @@ prints the topmost element grom the stack
 
 ### pall
 print all the elements in the stack starting from top
+
+### rotr
+rotates stack to the bottom
+
+### rotl
+rotates stack to the left
+
+### pstr
+prints ascii value of the stacks elements starting from top
+
+### pchar
+prints ascii value of the element at the to of the stack
+
+### mul
+multiplies the top fist two topmost elements in the stack
+
+### sub
+subtracts the top element of the stack from the second top element of the stack
+
+### mod
+computes the rest of the division of the second top element of the stack by the top element of the stack.
+
+
+
+## Brainf*ck
+
+This project also exhibit the usage and operations of Brainf*ck programming.
