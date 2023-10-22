@@ -34,6 +34,8 @@ stack_type *add_node(stack_type **head, const int n);
 void free_stack(stack_type *head);
 
 typedef int (*opcode_func)(stack_type **stack, unsigned int line_number, char *arg);
+opcode_func get_opcode(char *op_string);
+
 
 /**
  * struct instruction_s - opcode and its function
@@ -55,6 +57,8 @@ void _execute(char **args, unsigned int line_number, stack_type **stack);
 void free_args(char **args);
 char **instruction_parser(char *line);
 
+/** ## opcodes operations ## */
+
 int swap(stack_type **stack, unsigned int line_number, char *arg);
 int rotl(stack_type **stack, unsigned int line_number, char *arg);
 int rotr(stack_type **stack, unsigned int line_number, char *arg);
@@ -67,7 +71,6 @@ int pint(stack_type **stack, unsigned int line_number, char *arg);
 int pchar(stack_type **stack, unsigned int line_number, char *arg);
 int nop(stack_type **stack, unsigned int line_number, char *arg);
 int sub(stack_type **stack, unsigned int line_number, char *arg);
-opcode_func get_opcode(char *op_string);
 int mod_monty(stack_type **stack, unsigned int line_number, char *arg);
 int mul(stack_type **stack, unsigned int line_number, char *arg);
 int div_monty(stack_type **stack, unsigned int line_number, char *arg);
