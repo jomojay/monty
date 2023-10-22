@@ -3,7 +3,7 @@
 /**
  * pop - A function that removes the top value in the stack.
  * @stack: The pointer to the stack_t list.
- * @line_number: The line number of a Monty bytecodes file.
+ * @line_number: line number of a Monty bytecodes file.
  * @arg: argument to work with if necessary
  *
  * Return: 0 if successful, -1 on failure
