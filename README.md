@@ -38,6 +38,16 @@ subtracts the top element of the stack from the second top element of the stack
 ### mod
 computes the rest of the division of the second top element of the stack by the top element of the stack.
 
+### div
+divides the second top element of the stack by the top element of the stack.
+
+Usage: div
+
+### add
+adds the top two elements of the stack.
+
+Usage: add
+
 
 
 ## Brainf*ck
