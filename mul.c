@@ -8,7 +8,7 @@
  * from the second top element of the stack.
  * @stack: pointer to head of stack
  * @line_number: line number for current instruction
- * @arg: argument, if any
+ * @arg: argument if any
  *
  * Return: 0 if successful, -1 on failure
  */
